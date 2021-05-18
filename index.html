@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- title displayed on the tab -->
+    <title>To Do List</title>
+    <!-- importing font from google font api -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+web">
+    <!-- importing FontAwesome css file for icons -->
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <!-- importing the custom css styling that came with the template -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- top bar stuff goes here, in the header class -->
+        <div class="header">
+
+            <!-- clear list class -->
+            <div class="clear">
+                <i class="fa fa-refresh"></i>
+            </div>
+
+            <div id="date"></div>
+
+        </div>
+
+        <!-- bottom half stuff goes here, in the content class -->
+        <div class="content">
+            <!-- list class -->
+            <ul id="list">
+                <!-- item class -->
+                <li class="item">
+                    <i class="fa fa-circle-thin co" job="complete" id="0"></i>
+                    <p class="class">Piss</p>
+                    <i class="fa fa-trash-o de" job="delete" id="0"></i>
+                </li>
+            </ul>
+        </div>
+        <!-- input class for adding a new todo -->
+        <div class="add-to-do">
+            <!-- the + icon -->
+            <i class="fa fa-plus-circle"></i>
+            <input type="text" id="input" placeholder="Add item">
+        </div>
+
+    </div>
+</body>
+
+</html>
