@@ -47,10 +47,21 @@ document.addEventListener("keyup", function(even) {
         //if input field isn't empty
         if (toDo) {
             //call addToDo function with whatever's currently in the input field
-            addToDo(toDo);
+            addToDo(toDo, id, false, false);
             //adds task object to the task list
+            LIST.push({
+              name : toDo,
+              id: id,
+              done: false,
+              trash: false
+            });
         }
         //clears input value
         input.value = "";
     }
-})
+});
+
+//complete task function
+function completeToDo(element) {
+
+}
