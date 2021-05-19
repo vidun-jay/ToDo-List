@@ -63,5 +63,26 @@ document.addEventListener("keyup", function(even) {
 
 //complete task function
 function completeToDo(element) {
+    element.classList.toggle(CHECK);
+    element.classList.toggle(UNCHECK);
+    element.parentNode.querySelector(".text").classList.toggle(STRIKETHROUGH);
+
+    //toggle completion
+    LIST[element.id].done = LIST[element.id].done ? false : true;
 
 }
+
+//listen for mouse input
+list.addEventListener("click", function(event){
+
+  //find clicked element
+  const element = event.target;
+  const elementJob = element.attributes.job.value;
+
+  //run remove or complete function
+  if(elementJob == "complete"){
+    completeToDo(element);
+  } else if(elementJob == "delete"){
+    //call remove function once written
+  }
+});
