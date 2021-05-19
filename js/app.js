@@ -10,7 +10,36 @@ const UNCHECK = "fa-circle-thin"
 const STRIKETHROUGH = "lineThrough"
 
 //task variables
-let LIST = [], id = 0;
+let LIST = [],
+    id = 0;
+
+//get item from local storage
+let data = localStorage.getItem("TODO");
+
+//if data is not empty
+if (data) {
+    LIST = JSON.parse(data);
+    id = LIST.length;
+    loadList(LIST);
+}
+
+//if data is empty
+else {
+    LIST = [];
+    id = 0;
+}
+
+function loadList(array) {
+    array.forEach(function(item) {
+        addToDo(item.name, item.id, item.done, item.trash);
+    });
+}
+
+//clear
+clear.addEventListener("click", function() {
+    localStorage.clear();
+    location.reload();
+})
 
 //display date
 const today = new Date()
@@ -21,7 +50,7 @@ dateElement.innerHTML = today.toLocaleDateString("en-US", options)
 //add task method
 function addToDo(toDo, id, done, trash) {
 
-    if(trash) {return;}
+    if (trash) { return; }
     const DONE = done ? CHECK : UNCHECK
     const LINE = done ? STRIKETHROUGH : ""
 
@@ -50,11 +79,14 @@ document.addEventListener("keyup", function(even) {
             addToDo(toDo, id, false, false);
             //adds task object to the task list
             LIST.push({
-              name : toDo,
-              id: id,
-              done: false,
-              trash: false
+                name: toDo,
+                id: id,
+                done: false,
+                trash: false
             });
+
+            //add item to localstorage
+            localStorage.setItem("TODO", JSON.stringify(LIST));
         }
         //clears input value
         input.value = "";
@@ -72,17 +104,29 @@ function completeToDo(element) {
 
 }
 
+//remove task function
+function removeToDo(element) {
+    element.parentNode.parentNode.removeChild(element.parentNode);
+
+    LIST[element.id].trash = true;
+}
+
 //listen for mouse input
-list.addEventListener("click", function(event){
+list.addEventListener("click", function(event) {
 
-  //find clicked element
-  const element = event.target;
-  const elementJob = element.attributes.job.value;
+    //find clicked element
+    const element = event.target;
+    const elementJob = element.attributes.job.value;
 
-  //run remove or complete function
-  if(elementJob == "complete"){
-    completeToDo(element);
-  } else if(elementJob == "delete"){
-    //call remove function once written
-  }
+    //run remove or complete function
+    if (elementJob == "complete") {
+        completeToDo(element);
+    } else if (elementJob == "delete") {
+        removeToDo(element);
+        //call remove function once written
+    }
+
+    //add item to localstorage
+    localStorage.setItem("TODO", JSON.stringify(LIST));
+
 });
