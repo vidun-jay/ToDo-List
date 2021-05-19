@@ -9,6 +9,9 @@ const CHECK = "fa-check-circle"
 const UNCHECK = "fa-circle-thin"
 const STRIKETHROUGH = "lineThrough"
 
+//task variables
+let LIST = [], id = 0;
+
 //display date
 const today = new Date()
 const options = { weekday: "long", month: "short", day: "numeric" }
@@ -16,13 +19,19 @@ const options = { weekday: "long", month: "short", day: "numeric" }
 dateElement.innerHTML = today.toLocaleDateString("en-US", options)
 
 //add task method
-function addToDo(toDo) {
+function addToDo(toDo, id, done, trash) {
+
+    if(trash) {return;}
+    const DONE = done ? CHECK : UNCHECK
+    const LINE = done ? STRIKETHROUGH : ""
+
     const item = `<li class="item">
-                    <i class="fa fa-circle-thin co" job="complete" id="0"></i>
-                    <p class="text">${toDo}</p>
-                    <i class="fa fa-trash-o de" job="delete" id="0"></i>
+                    <i class="fa ${DONE} co" job="complete" id=${id}></i>
+                    <p class="text ${LINE}">${toDo}</p>
+                    <i class="fa fa-trash-o de" job="delete" id=${id}></i>
                 </li>
                 `;
+
     const position = "beforeend"
     list.insertAdjacentHTML(position, item)
 }
@@ -39,6 +48,9 @@ document.addEventListener("keyup", function(even) {
         if (toDo) {
             //call addToDo function with whatever's currently in the input field
             addToDo(toDo);
+            //adds task object to the task list
         }
+        //clears input value
+        input.value = "";
     }
 })
