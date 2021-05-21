@@ -21,7 +21,7 @@ body {
 
 .header {
     width: 380px;
-    height: 125px;
+    height: 65px;
     background-color: #001632;
     background-repeat: no-repeat;
     border-radius: 15px 15px 0 0;
@@ -50,7 +50,7 @@ body {
 #date {
     position: absolute;
     bottom: 10px;
-    left: 10px;
+    left: 20px;
     color: #FFF;
     font-size: 25px;
     font-family: 'Titillium Web', sans-serif;
@@ -61,10 +61,10 @@ body {
 
 .content {
     width: 380px;
-    height: 400px;
-    max-height: 400px;
+    height: 500px;
+    max-height: 500px;
     background-image: url('../img/bg1.jpg');
-    background-size: 100% 175%;
+    background-size: 100% 140%;
     overflow: auto;
 }
 
@@ -129,7 +129,7 @@ body {
 }
 
 .item i.de:hover {
-    color: #5e0f29;
+    color: #b51d31;
     cursor: pointer;
 }
 
