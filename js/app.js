@@ -70,6 +70,7 @@ function removeToDo(element) {
 
 //displays current date
 dateElement.innerHTML = today.toLocaleDateString("en-US", options);
+
 //checks if data is empty
 if (data) {
     LIST = JSON.parse(data);
@@ -88,15 +89,15 @@ document.addEventListener("keyup", function(even) {
         const toDo = input.value;
         //if input field isn't empty
         if (toDo) {
-            //call addToDo function with whatever's currently in the input field
-            addToDo(toDo, id, false, false);
-            //adds task object to the task list
             LIST.push({
                 name: toDo,
                 id: id,
                 done: false,
                 trash: false
             });
+            //call addToDo function with whatever's currently in the input field
+            addToDo(toDo, id, false, false);
+            //adds task object to the task list
             //add item to localstorage
             localStorage.setItem("TODO", JSON.stringify(LIST));
             id++
