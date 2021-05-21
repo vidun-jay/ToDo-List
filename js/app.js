@@ -24,14 +24,13 @@ const options = { weekday: "long", month: "short", day: "numeric" };
 function loadList(array) {
     //for each item in the list, pass the attributes of the item to the addToDo function
     array.forEach(function(item) {
-        addToDo(item.name, item.id, item.done, item.trash);
+        addToDo(item.name, item.id, item.done);
     });
 }
 
 //add task method
-function addToDo(toDo, id, done, trash) {
-    //checks if the task has been trashed or completed
-    if (trash) { return; }
+function addToDo(toDo, id, done) {
+    //checks or unchecks task
     const DONE = done ? CHECK : UNCHECK;
     const LINE = done ? STRIKETHROUGH : "";
     //defines list item to be added
@@ -64,8 +63,8 @@ function completeToDo(element) {
 function removeToDo(element) {
     //removes todo from list
     element.parentNode.parentNode.parentNode.removeChild(element.parentNode.parentNode);
-    //sets trash value to true
-    LIST[element.id].trash = true;
+    //removes element from list
+    LIST.splice([element], 1)
 }
 
 //displays current date
@@ -88,22 +87,21 @@ document.addEventListener("keyup", function(even) {
         //toDo = the current text in input field
         const toDo = input.value;
         //if input field isn't empty
-        if (toDo) {
+        if (toDo && LIST.length < 10 && toDo.length < 30) {
+            //call addToDo function with whatever's currently in the input field
+            addToDo(toDo, id, false);
+            //adds task object to the task list
             LIST.push({
                 name: toDo,
                 id: id,
                 done: false,
-                trash: false
             });
-            //call addToDo function with whatever's currently in the input field
-            addToDo(toDo, id, false, false);
-            //adds task object to the task list
             //add item to localstorage
             localStorage.setItem("TODO", JSON.stringify(LIST));
-            id++
+            id++;
+            //clears input value
+            input.value = "";
         }
-        //clears input value
-        input.value = "";
     }
 });
 
