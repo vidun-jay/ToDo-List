@@ -21,9 +21,8 @@ body {
 
 .header {
     width: 380px;
-    height: 200px;
-    background-image: url('../img/bg2.jpg');
-    background-size: 100% 200%;
+    height: 125px;
+    background-color: #001632;
     background-repeat: no-repeat;
     border-radius: 15px 15px 0 0;
     position: relative;
@@ -62,9 +61,10 @@ body {
 
 .content {
     width: 380px;
-    height: 350px;
-    max-height: 350px;
-    background-color: #FFF;
+    height: 400px;
+    max-height: 400px;
+    background-image: url('../img/bg1.jpg');
+    background-size: 100% 175%;
     overflow: auto;
 }
 
@@ -101,7 +101,7 @@ body {
 }
 
 .fa-check-circle {
-    color: #6eb200;
+    color: #FFF;
 }
 
 .item p.text {
@@ -111,7 +111,8 @@ body {
     font-size: 20px;
     left: 50px;
     top: 5px;
-    background-color: #FFF;
+    background-color: #FF00;
+    color: #fff;
     max-width: 285px;
 }
 
@@ -128,7 +129,7 @@ body {
 }
 
 .item i.de:hover {
-    color: #af0000;
+    color: #5e0f29;
     cursor: pointer;
 }
 
@@ -147,7 +148,7 @@ body {
 .add-to-do i {
     position: absolute;
     font-size: 40px;
-    color: #4162f6;
+    color: #064a8b;
 }
 
 .add-to-do input {
@@ -163,28 +164,28 @@ body {
 
 .add-to-do input::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    color: #4162f6;
+    color: #064a8b;
     font-family: 'Titillium Web', sans-serif;
     font-size: 20px;
 }
 
 .add-to-do input::-moz-placeholder {
     /* Firefox 19+ */
-    color: #4162f6;
+    color: #064a8b;
     font-family: 'Titillium Web', sans-serif;
     font-size: 20px;
 }
 
 .add-to-do input:-ms-input-placeholder {
     /* IE 10+ */
-    color: #4162f6;
+    color: #064a8b;
     font-family: 'Titillium Web', sans-serif;
     font-size: 20px;
 }
 
 .add-to-do input:-moz-placeholder {
     /* Firefox 18- */
-    color: #4162f6;
+    color: #064a8b;
     font-family: 'Titillium Web', sans-serif;
     font-size: 20px;
 }

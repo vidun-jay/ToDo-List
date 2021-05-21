@@ -36,9 +36,13 @@ function addToDo(toDo, id, done, trash) {
     const LINE = done ? STRIKETHROUGH : "";
     //defines list item to be added
     const item = `<li class="item">
+                    <span style="color: White;">
                     <i class="fa ${DONE} co" job="complete" id=${id}></i>
+                    </span>
                     <p class="text ${LINE}">${toDo}</p>
+                    <span style="color: White;">
                     <i class="fa fa-trash-o de" job="delete" id=${id}></i>
+                    </span>
                 </li>
                 `;
     //inserts item before the end of the list class
@@ -50,7 +54,7 @@ function addToDo(toDo, id, done, trash) {
 function completeToDo(element) {
     element.classList.toggle(CHECK);
     element.classList.toggle(UNCHECK);
-    element.parentNode.querySelector(".text").classList.toggle(STRIKETHROUGH);
+    element.parentNode.parentNode.querySelector(".text").classList.toggle(STRIKETHROUGH);
     //toggle completion
     LIST[element.id].done = LIST[element.id].done ? false : true;
 
@@ -59,9 +63,21 @@ function completeToDo(element) {
 //remove task function
 function removeToDo(element) {
     //removes todo from list
-    element.parentNode.parentNode.removeChild(element.parentNode);
+    element.parentNode.parentNode.parentNode.removeChild(element.parentNode.parentNode);
     //sets trash value to true
     LIST[element.id].trash = true;
+}
+
+//displays current date
+dateElement.innerHTML = today.toLocaleDateString("en-US", options);
+//checks if data is empty
+if (data) {
+    LIST = JSON.parse(data);
+    id = LIST.length;
+    loadList(LIST);
+} else {
+    LIST = [];
+    id = 0;
 }
 
 //add to list if enter key pressed
@@ -113,16 +129,3 @@ clear.addEventListener("click", function() {
     localStorage.clear();
     location.reload();
 });
-
-//displays current date
-dateElement.innerHTML = today.toLocaleDateString("en-US", options);
-
-//checks if data is empty
-if (data) {
-    LIST = JSON.parse(data);
-    id = LIST.length;
-    loadList(LIST);
-} else {
-    LIST = [];
-    id = 0;
-}
