@@ -13,6 +13,9 @@ const STRIKETHROUGH = "lineThrough"
 let LIST = [],
     id = 0;
 
+var ping = new Audio();
+ping.src = "../audio/ping.mp3";
+
 //get data from local storage
 let data = localStorage.getItem("TODO");
 
@@ -56,6 +59,10 @@ function completeToDo(element) {
     element.parentNode.parentNode.querySelector(".text").classList.toggle(STRIKETHROUGH);
     //toggle completion
     LIST[element.id].done = LIST[element.id].done ? false : true;
+
+    if (LIST[element.id].done == true) {
+        ping.play();
+    }
 
 }
 
